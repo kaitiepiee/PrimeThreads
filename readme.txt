@@ -1,28 +1,30 @@
-STDISCM 
-P1 - Threaded Prime Number Search
-Kaitlyn P. Tighe S12
+# Threaded Prime Number Search for STDISCM
 
+## Overview  
+This project implements a **multi-threaded prime number search** in C++, using four different **variants** that adjust **when** results are printed and **how** tasks are divided among threads.  
 
+## Variants  
+All four variants rely on the same **prime-checking algorithm** but differ in:  
+(A) **When results are printed:**  
+   - **A.1:** Print immediately (includes thread ID & timestamp).  
+   - **A.2:** Wait until all threads finish, then print everything.  
 
-Variants
-- All four variants rely on the same basic “prime‐checking” routine but differ in 
-(A) when they print results (immediate vs. after all threads) and 
-(B) how the work is divided among threads (static chunk vs. dynamic “linear” distribution).
+(B) **How tasks are divided among threads:**  
+   - **B.1:** Straight division of the search range (each thread gets a fixed range).  
+   - **B.2:** Linear search with dynamic task assignment (threads pick numbers dynamically).  
 
-    Combinations
-        A.1: Print immediately with thread ID & timestamp.
-        A.2: Wait until all threads finish, then print everything.
-        B.1: Straight division of search range.
-        B.2: Linear search with threads handling divisibility testing.
+### Variant Combinations:  
+| Variant | Print Mode         | Task Division           |
+|---------|--------------------|-------------------------|
+| **1**   | A.1 (Immediate)    | B.1 (Straight Division) |
+| **2**   | A.1 (Immediate)    | B.2 (Linear Search)     |
+| **3**   | A.2 (Wait & Print) | B.1 (Straight Division) |
+| **4**   | A.2 (Wait & Print) | B.2 (Linear Search)     |
 
-    The four combinations are:
-        Variant 1 → (A.1 + B.1)
-        Variant 2 → (A.1 + B.2)
-        Variant 3 → (A.2 + B.1)
-        Variant 4 → (A.2 + B.2)
+---
 
-Project Structure
-- Coded with C++ in MacOs. 
+## Project Structure  
+Coded in C++ and tested on macOS.  
     PrimeThreads/
     │── main.cpp
     │── utilities.h
@@ -46,21 +48,26 @@ Project Structure
         ├── variant4.cpp
         ├── variant4.h
 
-Input Validations
-- Only positive numbers are accepted. No negative numbers or special characters.
-    - numThreads >= 1
-    - limit >= 2
-    - variant between 1 and 4
-- Invalid inputs will result in an error message.
+---
 
+## Input Validations  
+- The program accepts only **positive numbers**.  
+- Invalid inputs will result in an error message.  
+- Constraints:  
+  - `numThreads >= 1`  
+  - `limit >= 2`  
+  - `variant` must be between `1` and `4`  
 
-Build/Compilation Instructions
-    Type in terminal the following:
+---
 
-        rm -rf *.o primes
-        g++ -std=c++11 -pthread -o primes main.cpp \
-            variant1/variant1.cpp variant2/variant2.cpp \
-            variant3/variant3.cpp variant4/variant4.cpp \
-            utilities.cpp
-        ./primes
+## Build and Compilation Instructions  
+To compile and run the program, use the following terminal commands:  
 
+```
+rm -rf *.o primes
+g++ -std=c++11 -pthread -o primes main.cpp \
+    variant1/variant1.cpp variant2/variant2.cpp \
+    variant3/variant3.cpp variant4/variant4.cpp \
+    utilities.cpp
+./primes
+```
