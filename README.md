@@ -1,7 +1,7 @@
 # Threaded Prime Number Search for STDISCM
 
 ## Overview  
-This project implements a **multi-threaded prime number search** in C++, using four different **variants** that adjust **when** results are printed and **how** tasks are divided among threads.  
+This project implements a **multi-threaded prime number search** in C++, using four different **variants** that adjust **when** results are printed and **how** tasks are divided among threads.  Coded on C++ and tested on macOs.
 
 ## Variants  
 All four variants rely on the same **prime-checking algorithm** but differ in:  
@@ -20,33 +20,6 @@ All four variants rely on the same **prime-checking algorithm** but differ in:
 | **2**   | A.1 (Immediate)    | B.2 (Linear Search)     |
 | **3**   | A.2 (Wait & Print) | B.1 (Straight Division) |
 | **4**   | A.2 (Wait & Print) | B.2 (Linear Search)     |
-
----
-
-## Project Structure  
-Coded in C++ and tested on macOS.  
-    PrimeThreads/
-    │── main.cpp
-    │── utilities.h
-    │── utilities.cpp
-    │── config.txt
-    │── readme.txt
-    │
-    ├── variant1/
-    │   ├── variant1.cpp
-    │   ├── variant1.h
-    │
-    ├── variant2/
-    │   ├── variant2.cpp
-    │   ├── variant2.h
-    │
-    ├── variant3/
-    │   ├── variant3.cpp
-    │   ├── variant3.h
-    │
-    └── variant4/
-        ├── variant4.cpp
-        ├── variant4.h
 
 ---
 
